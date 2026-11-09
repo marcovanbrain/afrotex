@@ -1,13 +1,19 @@
+"use client"
+
 import Image from "next/image"
+import { useAudience } from "./audience-context"
 
 export function HeroSection() {
+  const { audience } = useAudience()
+  const isWoman = audience === "mulher"
+
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden">
       {/* Background image */}
       <div className="absolute inset-0">
         <Image
-          src="/images/hero-hair.jpg"
-          alt="Cabelo natural bonito"
+          src={isWoman ? "/images/hero-hair.jpg" : "/images/male-curly.png"}
+          alt={`Cabelo natural ${isWoman ? "feminino" : "masculino"}`}
           fill
           className="object-cover"
           priority
