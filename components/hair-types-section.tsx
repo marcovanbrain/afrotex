@@ -7,7 +7,7 @@ const hairTypes = [
   {
     type: "Tipo 1",
     name: "Liso",
-    image: "/images/hair-straight.jpg",
+    images: { mulher: "/images/hair-straight.jpg", homem: "/images/male-straight.png" },
     description:
       "Cabelo naturalmente reto, sem ondulação. Tende a ser mais oleoso devido ao sebo que escorre facilmente pelo fio. Brilhoso e macio, mas pode parecer sem volume.",
     audienceNotes: {
@@ -23,7 +23,7 @@ const hairTypes = [
   {
     type: "Tipo 2",
     name: "Ondulado",
-    image: "/images/hair-wavy.jpg",
+    images: { mulher: "/images/hair-wavy.jpg", homem: "/images/male-wavy.png" },
     description:
       "Possui ondas em formato de 'S' ao longo do comprimento. Um meio-termo entre liso e cacheado, com tendência ao frizz. Pode variar de ondas leves a ondas bem definidas.",
     audienceNotes: {
@@ -39,7 +39,7 @@ const hairTypes = [
   {
     type: "Tipo 3",
     name: "Cacheado",
-    image: "/images/hair-curly.jpg",
+    images: { mulher: "/images/hair-curly.jpg", homem: "/images/male-curly.png" },
     description:
       "Cachos bem formados em espiral, com bastante volume e definição natural. Tende a ser mais seco e precisa de hidratação constante para manter a forma e o brilho.",
     audienceNotes: {
@@ -55,7 +55,7 @@ const hairTypes = [
   {
     type: "Tipo 4",
     name: "Crespo",
-    image: "/images/hair-coily.jpg",
+    images: { mulher: "/images/hair-coily.jpg", homem: "/images/male-coily.png" },
     description:
       "Fios com curvatura muito apertada, podendo formar zigue-zague. É o tipo mais frágil e seco, mas também o mais volumoso e versátil. Precisa de muita hidratação e cuidado.",
     audienceNotes: {
@@ -83,7 +83,7 @@ export function HairTypesSection() {
             Classificação Capilar
           </p>
           <h2 className="font-sans text-4xl md:text-5xl font-bold text-foreground text-balance">
-            Tipos de Cabelo e Finalização
+            Tipos de Cabelo e Finalização {audience === "mulher" ? "Feminina" : "Masculina"}
           </h2>
           <p className="mt-4 text-muted-foreground leading-relaxed">
             Cada cabelo é único. Entender seu tipo é o primeiro passo para uma rotina
@@ -100,8 +100,8 @@ export function HairTypesSection() {
             >
               <div className="relative aspect-[16/10] overflow-hidden">
                 <Image
-                  src={hair.image}
-                  alt={`Cabelo ${hair.name}`}
+                  src={hair.images[audience]}
+                  alt={`Cabelo ${hair.name} ${audience === "mulher" ? "feminino" : "masculino"}`}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
