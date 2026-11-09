@@ -10,6 +10,10 @@ const hairTypes = [
     image: "/images/hair-straight.jpg",
     description:
       "Cabelo naturalmente reto, sem ondulação. Tende a ser mais oleoso devido ao sebo que escorre facilmente pelo fio. Brilhoso e macio, mas pode parecer sem volume.",
+    audienceNotes: {
+      mulher: "Para cabelos longos ou curtos, prefira produtos leves para preservar o movimento e o volume sem pesar.",
+      homem: "Em cortes curtos ou médios, lave conforme a oleosidade do couro cabeludo e use finalizadores leves para controlar o formato.",
+    },
     subtypes: [
       { code: "1A", label: "Fino e reto" },
       { code: "1B", label: "Médio com mais corpo" },
@@ -22,6 +26,10 @@ const hairTypes = [
     image: "/images/hair-wavy.jpg",
     description:
       "Possui ondas em formato de 'S' ao longo do comprimento. Um meio-termo entre liso e cacheado, com tendência ao frizz. Pode variar de ondas leves a ondas bem definidas.",
+    audienceNotes: {
+      mulher: "Finalize com gelatina ou creme leve e amasse os fios para realçar ondas em qualquer comprimento.",
+      homem: "Use leave-in leve e seque sem esfregar; a rotina funciona bem para cortes curtos, médios ou longos.",
+    },
     subtypes: [
       { code: "2A", label: "Ondas leves e soltas" },
       { code: "2B", label: "Ondas definidas em S" },
@@ -34,6 +42,10 @@ const hairTypes = [
     image: "/images/hair-curly.jpg",
     description:
       "Cachos bem formados em espiral, com bastante volume e definição natural. Tende a ser mais seco e precisa de hidratação constante para manter a forma e o brilho.",
+    audienceNotes: {
+      mulher: "Aposte em hidratação e fitagem para manter os cachos definidos, com brilho e movimento.",
+      homem: "A hidratação frequente ajuda cachos de todos os comprimentos; finalize por mechas para mais definição e controle.",
+    },
     subtypes: [
       { code: "3A", label: "Cachos largos e soltos" },
       { code: "3B", label: "Cachos médios em espiral" },
@@ -46,6 +58,10 @@ const hairTypes = [
     image: "/images/hair-coily.jpg",
     description:
       "Fios com curvatura muito apertada, podendo formar zigue-zague. É o tipo mais frágil e seco, mas também o mais volumoso e versátil. Precisa de muita hidratação e cuidado.",
+    audienceNotes: {
+      mulher: "Invista em umectação, hidratação profunda e proteção noturna para reduzir o ressecamento e preservar a curvatura.",
+      homem: "Mantenha o couro cabeludo hidratado e use óleos leves; a rotina vale para fios crespos curtos, médios ou longos.",
+    },
     subtypes: [
       { code: "4A", label: "Crespo com cachos definidos" },
       { code: "4B", label: "Crespo em formato Z" },
@@ -101,8 +117,12 @@ export function HairTypesSection() {
                 <h3 className="font-sans text-2xl font-bold text-card-foreground mb-2">
                   {hair.name}
                 </h3>
-                <p className="text-muted-foreground leading-relaxed text-sm mb-5">
+                <p className="text-muted-foreground leading-relaxed text-sm mb-3">
                   {hair.description}
+                </p>
+                <p className="mb-5 rounded-xl bg-secondary/70 px-4 py-3 text-sm leading-relaxed text-secondary-foreground">
+                  <span className="font-semibold">Dica para {audience === "mulher" ? "mulheres" : "homens"}:</span>{" "}
+                  {hair.audienceNotes[audience]}
                 </p>
 
                 {/* Subtypes */}
