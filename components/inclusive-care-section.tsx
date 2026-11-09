@@ -1,7 +1,7 @@
 "use client"
 
-import { useState } from "react"
 import { CircleUserRound, HeartPulse, Scissors, Sparkles } from "lucide-react"
+import { useAudience } from "./audience-context"
 
 const profiles = {
   mulher: {
@@ -31,7 +31,7 @@ const profiles = {
 } as const
 
 export function InclusiveCareSection() {
-  const [profile, setProfile] = useState<keyof typeof profiles>("mulher")
+  const { audience: profile, setAudience: setProfile } = useAudience()
   const content = profiles[profile]
   const Icon = content.icon
 
